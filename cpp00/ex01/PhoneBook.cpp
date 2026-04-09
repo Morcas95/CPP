@@ -13,14 +13,19 @@ int    PhoneBook::addContact(void)
     std::string nName;
     std::string number;
     std::string secret;
+    int correct = 0;
     std::cout << "Enter first name: ";
     std::getline(std::cin, name);
     std::cout << "Enter last name: ";
     std::getline(std::cin, surname);
     std::cout << "Enter nickname: ";
     std::getline(std::cin, nName);
-    std::cout << "Enter phone number: ";
-    std::getline(std::cin, number);
+    while (correct == 0)
+    {
+        std::cout << "Enter phone number: ";
+        std::getline(std::cin, number);
+        correct = PhoneBook::checkNumber(number);
+    }
     std::cout << "Enter darkest secret: ";
     std::getline(std::cin, secret);
     if (name.empty() || surname.empty() || nName.empty() || number.empty() || secret.empty())
@@ -83,6 +88,21 @@ void     PhoneBook::searchContact(void)
         }
     }
     std::cout << std::endl;
+}
+
+int     PhoneBook::checkNumber(std::string number)
+{
+    for (unsigned long j = 0; j < number.length(); j++)
+    {
+        if (j == 0 && number[j] == '+')
+            j++;
+        if (number[j] < '0' || number[j] > '9')
+        {
+            std::cout << std::endl << "Invalid phone number. Try again!" << std::endl << std::endl;
+            return (0);
+        }
+    }
+    return (1);
 }
 
 void    PhoneBook::fillSearch(int index)

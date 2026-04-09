@@ -14,6 +14,7 @@
             int full;
             void    fillSearch(int index);
             void    displayContact(int index);
+            int     checkNumber(std::string number);
         public:
             PhoneBook();
             int     addContact(void);
