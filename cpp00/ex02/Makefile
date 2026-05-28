@@ -1,25 +1,26 @@
-FLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = bank
-CXX = c++
+FLAGS	= -Wall -Wextra -Werror -std=c++98
+NAME	= bank
+CXX		= c++
+INC		= -I hpp/
 
-SRCS = 	Account.cpp tests.cpp
-
-OBJS = 	Account.o tests.o
-
-HDS = 	Account.hpp
+SRCS	= $(shell ls src/)
+OBJS	= $(addprefix obj/, $(SRCS:.cpp=.o))
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@$(CXX) $(FLAGS) $(OBJS) -o $(NAME)
+	@$(CXX) $(FLAGS) $(OBJS) -o $(NAME) && echo "Compilado: $(NAME)" || (echo "Error al compilar" && exit 1)
 
-%.o: %.cpp $(HDS)
-	@$(CXX) $(FLAGS) -c $< -o $@
+obj/%.o: src/%.cpp
+	@mkdir -p obj
+	@$(CXX) $(FLAGS) $(INC) -c $< -o $@
 
 clean:
-	@rm -f $(OBJS)
+	@rm -rf obj
 
 fclean: clean
 	@rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re

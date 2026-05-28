@@ -1,19 +1,25 @@
-FLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = megaphone
-CXX = c++
-SRCS = megaphone.cpp
-OBJS = megaphone.o
+FLAGS	= -Wall -Wextra -Werror -std=c++98
+NAME	= megaphone
+CXX		= c++
 
-all: $(OBJS)
-	@$(CXX) $(FLAGS) $(OBJS) -o $(NAME)
+SRCS	= $(shell ls src/)
+OBJS	= $(addprefix obj/, $(SRCS:.cpp=.o))
 
-$(OBJS): $(SRCS)
-	@$(CXX) $(FLAGS) -c $(SRCS) -o $(OBJS)
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	@$(CXX) $(FLAGS) $(OBJS) -o $(NAME) && echo "Compilado: $(NAME)" || (echo "Error al compilar" && exit 1)
+
+obj/%.o: src/%.cpp
+	@mkdir -p obj
+	@$(CXX) $(FLAGS) -c $< -o $@
 
 clean:
-	@rm -f $(OBJS)
+	@rm -rf obj
 
 fclean: clean
 	@rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re
