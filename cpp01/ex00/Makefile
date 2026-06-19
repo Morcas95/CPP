@@ -1,5 +1,5 @@
 FLAGS	= -Wall -Wextra -Werror -std=c++98
-NAME	= phonebook
+NAME	= BraiiiiiiinnnzzzZ
 CXX		= c++
 INC		= -I hpp/
 
