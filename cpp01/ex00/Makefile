@@ -1,7 +1,7 @@
 FLAGS	= -Wall -Wextra -Werror -std=c++98
 NAME	= BraiiiiiiinnnzzzZ
 CXX		= c++
-INC		= -I hpp/
+INC		= -I inc/
 
 SRCS	= $(shell ls src/)
 OBJS	= $(addprefix obj/, $(SRCS:.cpp=.o))
