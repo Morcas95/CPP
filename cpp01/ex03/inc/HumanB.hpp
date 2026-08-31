@@ -11,7 +11,7 @@
 			HumanB(std::string humanName);
 			~HumanB(void);
 			void attack(void);
-			void setWeapon(Weapon type);
+			void setWeapon(Weapon &type);
 		private:
 			std::string name;
 			Weapon *weapon;

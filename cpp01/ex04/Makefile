@@ -1,7 +1,6 @@
 FLAGS	= -Wall -Wextra -Werror -std=c++98
 NAME	= SedIsForLosers
 CXX		= c++
-INC		= -I inc/
 
 SRCS	= $(shell ls src/)
 OBJS	= $(addprefix obj/, $(SRCS:.cpp=.o))
@@ -13,7 +12,7 @@ $(NAME): $(OBJS)
 
 obj/%.o: src/%.cpp
 	@mkdir -p obj
-	@$(CXX) $(FLAGS) $(INC) -c $< -o $@
+	@$(CXX) $(FLAGS) -c $< -o $@
 
 clean:
 	@rm -rf obj
