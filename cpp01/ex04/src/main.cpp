@@ -14,14 +14,21 @@ int main(int argc, char **argv)
     std::string s1 = argv[2];
     std::string s2 = argv[3];
 
+	if (s1 == "")
+	{
+		std::cout << "Error: String 1 is empty" << std::endl;
+		return (1);
+	}
+
     std::ifstream file1(filename.c_str());
-    std::ofstream file2((filename + ".replace").c_str(), std::ios::trunc);
 
     if(!file1.is_open())
 	{
-		std::cout << "Error opening " << filename << std::endl;
+		std::cout << filename << " doesn't exist" << std::endl;
 		return (1);
 	}
+
+	std::ofstream file2((filename + ".replace").c_str(), std::ios::trunc);
 
 	if(!file2.is_open())
 	{
@@ -47,11 +54,11 @@ int main(int argc, char **argv)
 		}
 		else
 		{
-		
+
 			file2 << line;
 			i += line.length();
 		}
-		if (!file1.eof()) 
+		if (!file1.eof())
     		file2 << std::endl;
 	}
 
