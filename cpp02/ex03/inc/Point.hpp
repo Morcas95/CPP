@@ -14,6 +14,8 @@
 			Point(const Point &a);
 			Point& operator=(const Point &a);
 			~Point(void);
+			Fixed getX(void)const;
+			Fixed getY(void)const;
 		private:
 			const Fixed x;
 			const Fixed y;
