@@ -10,6 +10,8 @@ int main()
 
     clap1.takeDamage(5);         // Tomar daño
     clap2.takeDamage(12);
+    clap2.beRepaired(1);
+    clap2.attack("Target1");
 
     clap1.beRepaired(3);         // Reparación
     clap2.beRepaired(6);

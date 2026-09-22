@@ -1,5 +1,5 @@
 FLAGS	= -Wall -Wextra -Werror -std=c++98
-NAME	= ClapTrap
+NAME	= ScavTrap
 CXX		= c++
 INC		= -I inc/
 
