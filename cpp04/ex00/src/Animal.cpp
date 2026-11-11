@@ -21,3 +21,13 @@ Animal::~Animal(void)
 {
     std::cout << "Animal destructor called." << std::endl;
 }
+
+std::string Animal::getType(void) const
+{
+    return type;
+}
+
+void Animal::makeSound(void) const
+{
+    std::cout << "Animal sound" << std::endl;
+}
